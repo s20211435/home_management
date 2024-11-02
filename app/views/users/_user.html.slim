@@ -1,0 +1,11 @@
+.row.my-2.border-bottom
+  .col-2
+    = user.name
+  .col-6
+    = user.email
+  .col-2.mb-2
+    = link_to '編集', edit_user_path(user), class: "btn btn-primary btn-sm", style: "color: white;text-decoration: none;", data: { turbo_frame: dom_id(user, "edit_user_frame") }
+  .col-2
+    = link_to user_path(user), method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger btn-sm", style: "color: white; text-decoration: none;" do
+      i.fa-solid.fa-trash.px-1
+      | 削除

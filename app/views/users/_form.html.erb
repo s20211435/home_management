@@ -1,0 +1,25 @@
+<%= form_with(model: user, local: false) do |form| %>
+  <% if user.errors.any? %>
+    <div class="alert alert-danger">
+      <ul>
+        <% user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb-3">
+    <%= form.label :name, "名前" %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :email, "メールアドレス" %>
+    <%= form.email_field :email, class: "form-control" %>
+  </div>
+
+  <div class="text-end">
+    <%= form.submit user.persisted? ? "更新" : "登録", class: "btn btn-primary" %>
+  </div>
+<% end %>

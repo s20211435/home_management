@@ -1,0 +1,4 @@
+<%= turbo_stream.prepend "users", partial: "users/user", locals: { user: @user } %>
+<%= turbo_stream.replace "flash", partial: "layouts/flash" %>
+
+

@@ -1,0 +1,26 @@
+=turbo_frame_tag "new_user_frame" do
+  .container
+    = form_with(model: @user) do |form|
+      .row
+        .col-3
+          .form-group
+            = form.label '名前'
+            = form.text_field :name, class: 'form-control', value: @user.name
+        .col-3
+          .form-group
+            = form.label 'メールアドレス'
+            = form.email_field :email, class: 'form-control', value: @user.email
+        .col-3
+          .form-group
+            = form.label 'パスワード'
+            = form.password_field :password, class: 'form-control'
+        .col-3
+            = form.label 'パスワード（確認）'
+            = form.password_field :password_confirmation, class: 'form-control'
+
+      .row.mt-3
+        .col-6
+        .col-3
+          = form.submit "登録", class: 'btn btn-primary w-100'
+        .col-3
+          = link_to "戻る", root_path, class: 'btn btn-secondary w-100'

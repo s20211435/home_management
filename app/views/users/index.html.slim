@@ -1,0 +1,15 @@
+  h1.m-auto.p-3
+    | 管理者画面
+
+  .container
+    ul.list-group#users
+      - @users.each do |user|
+        = render "users/user", user: user
+        = turbo_frame_tag dom_id(user, "edit_user_frame") do
+
+    = paginate @users, class: "pagination justify-content-center"
+
+  = turbo_frame_tag "new_user_frame" do
+    .row.mt-4
+      .col-12.text-end
+        = link_to '新規登録', new_user_path, class: "btn btn-primary", style: "color: white;text-decoration: none;", data: { turbo_frame: "new_user_frame" }
