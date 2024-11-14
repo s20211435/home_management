@@ -1,0 +1,14 @@
+<%= turbo_stream.append "schedules" do %>
+  <%= render partial: "schedule", locals: { schedule: @schedule } %>
+<% end %>
+
+<%= turbo_stream.replace "new_schedule_frame" do %>
+  <%= render partial: "form", locals: { schedule: Schedule.new } %>
+<% end %>
+
+<%= turbo_stream.append "flash" do %>
+  <div class="alert alert-success">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+

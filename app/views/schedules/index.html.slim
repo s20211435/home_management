@@ -1,0 +1,14 @@
+h1.m-auto.p-3
+  | スケジュール一覧
+= turbo_frame_tag "new_schedule_frame" do
+  .row.mt-4
+    .col-12.text-end
+      = link_to '新規登録', new_user_schedule_path(@user), class: "btn btn-dark", style: "color: white;text-decoration: none;", data: { turbo_frame: "new_schedule_frame" }
+.container
+  ul.list-group#schedules
+    - @schedules.each do |schedule|
+      = render partial: 'schedule', locals: { schedule: schedule }
+      = turbo_frame_tag dom_id(schedule, "edit_schedule_frame") do
+
+
+  = paginate @schedules, class: "pagination justify-content-center"
