@@ -1,0 +1,13 @@
+li.list-group-item.d-flex.justify-content-between.align-items-start.border.border-black.rounded-2.m-2
+  .ms-2.me-auto
+    .fw-bold
+      = schedule.title
+    p
+      = schedule.description
+    p
+      = l(schedule.start_time, format: :long)
+      |  〜 
+      = l(schedule.end_time, format: :long)
+  .btn-group
+    = link_to '編集', edit_user_schedule_path(@user, schedule), class: "btn btn-primary btn-sm", data: { turbo_frame: dom_id(schedule, "edit_schedule_frame") }
+    = link_to '削除', [@user, schedule], method: :delete, data: { confirm: '本当に削除しますか？' }, class: "btn btn-danger btn-sm"

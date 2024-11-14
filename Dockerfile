@@ -40,6 +40,10 @@ RUN bundle install && \
 # Copy application code
 COPY . .
 
+COPY ./bin/docker-entrypoint-development /usr/src/app/bin/docker-entrypoint-development
+
+
+
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 

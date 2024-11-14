@@ -1,0 +1,9 @@
+= turbo_frame_tag "new_schedule_frame" do
+  h3 スケジュール登録
+
+  - flash.each do |message_type, message|
+    - message_type = message_type.to_s
+    div class="alert alert-#{message_type}" = message
+
+  = form_with model: [@user, @schedule], local: true do |f|
+    = render partial: 'form', locals: { f: f }
